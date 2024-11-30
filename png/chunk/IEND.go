@@ -1,0 +1,15 @@
+package chunk
+
+func NewIEND() *Chunk {
+	c := Chunk{
+		Length: [4]byte{0x00, 0x00, 0x00, 0x00},
+		Type:   [4]byte{'I', 'E', 'N', 'D'},
+		Data:   nil,
+	}
+	CRC32(&c)
+	return &c
+}
+
+func StandardIEND() []byte {
+	return []byte{0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4E, 0x44, 0xAE, 0x42, 0x60, 0x82}
+}
